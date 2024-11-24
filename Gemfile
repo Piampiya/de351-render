@@ -75,3 +75,4 @@ gem 'mutex_m'
 gem 'bigdecimal'
 
 gem 'devise'
+gem "noticed", "~> 2.4"
