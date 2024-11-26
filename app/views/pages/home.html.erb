@@ -1,6 +1,20 @@
-<div class="container">
+<div class="container card">
     <h1>Home Page</h1>
     <p>You can read more about ProgrammerCafe, or checkout the blog.</p>
-    <%= link_to "About ProgrammerCafe", about_path, class:"btn btn-secondary" %>
-    <%= link_to "Blog", posts_path, class:"btn btn-primary" %>
+    <div class="card-actions mb-3">
+      <%= link_to "About ProgrammerCafe", about_path, class:"btn btn-secondary" %>
+      <%= link_to "Blog", posts_path, class:"btn btn-primary" %>
+    </div>
 </div>
+<% if current_user %>
+  <div class="container card mt-4">
+    <h2>User Info</h2>
+    <h4><%= current_user.full_name %></h4>
+    <ul>
+      <li>Gender : <%= current_user.personal_info.gender.titleize %></li>
+      <li>Age : <%= current_user.personal_info.age %></li>
+      <li>Country : <%= current_user.personal_info.country.titleize %></li>
+      <li>Goal : <%= current_user.personal_info.goal.titleize %></li>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gender: MyString
+  age: 1
+  country: MyString
+  goal: MyString
+  user: one
+
+two:
+  gender: MyString
+  age: 1
+  country: MyString
+  goal: MyString
+  user: two

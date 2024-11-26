@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Set Your Personal Info</h1>
+  <%= form_for @personal_info, method: :put, url: wizard_path do |f| %>
+    <% if f.object.errors.any? %>
+      <div class="error_messages">
+        <% f.object.errors.full_messages.each do |error| %>
+          <p style="color: red"><%= error %></p>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-control">
+      <legend>Your Personal Info</legend>
+      <div class="mt-2 mb-3">
+        <%= f.label :gender, "Gender", class: "form-label" %>
+        <%= f.text_field :gender, class: "form-control", placeholder: ".....", required: true %>
+      </div>
+      <div class="mt-2 mb-3">
+        <%= f.label :age, "Age", class: "form-label" %>
+        <%= f.text_field :age, class: "form-control", placeholder: ".....", required: true %>
+      </div>
+      <div class="mt-2 mb-3">
+        <%= f.label :country, "Country", class: "form-label" %>
+        <%= f.text_field :country, class: "form-control", placeholder: ".....", required: true %>
+      </div>
+      <div class="mt-2 mb-3">
+        <%= f.label :goal, "Goal", class: "form-label" %>
+        <%= f.text_field :goal, class: "form-control", placeholder: ".....", required: true %>
+      </div>
+      <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 d-flex justify-content-end mt-2 btn-group">
+          <%= render 'links' %>
+          <%= f.submit 'Next Step', class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <style>
+    div.field_with_errors {
+      display: inline;
+    }
+  </style>
+</div>
