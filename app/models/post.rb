@@ -2,6 +2,10 @@ class Post < ApplicationRecord
   extend FriendlyId
   validates :title, presence: true, length: { minimum: 5, maximum: 50 }
   validates :body, presence: true
+
+  has_rich_text :body
+  belongs_to :category
+
   belongs_to :user
   has_many :comments, dependent: :destroy
 
@@ -13,7 +17,7 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["user"]
+    ["user", "category"]
   end
 
   friendly_id :title, use: %i[slugged history finders]

@@ -27,13 +27,17 @@ PersonalInfo.first_or_create(gender: 'Female',
                              country: 'Japan',
                              goal: 'Learn new things',
                              user: boon)
+category = Category.first_or_create!(name:"Share", display_in_nav: true)
+Category.first_or_create!(name:"Discuss", display_in_nav: true)
+
 elapsed = Benchmark.measure do
   posts = []
   10.times do |x|
     puts "Creating post #{x}"
     post = Post.new(title: "Title #{x}",
                     body: "Body #{x} Words go here Idk",
-                    user: piam)
+                    user: piam,
+                    category: category)
 
     5.times do |y|
       puts "Creating comment #{y} for post #{x}"
