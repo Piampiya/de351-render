@@ -22,7 +22,7 @@ PersonalInfo.first_or_create!(gender: 'Male',
                               country: 'Thailand',
                               goal: 'Share knowledge',
                               user: piam)
-PersonalInfo.first_or_create!(gender: 'Female',
+PersonalInfo.first_or_create(gender: 'Female',
                              age: '20',
                              country: 'Japan',
                              goal: 'Learn new things',

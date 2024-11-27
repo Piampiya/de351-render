@@ -13,7 +13,7 @@ class AfterSignupController < ApplicationController
     when 'set_personal_info'
       @personal_info = get_personal_info
     when 'welcome'
-      #@users = User.all
+      @users = User.all
     end
 
     render_wizard

@@ -8,13 +8,13 @@
         <% end %>
       </div>
     <% end %>
-    <div class="form-control">
+    <div class="form-control mb-3">
       <legend>Your Name</legend>
       <%= f.text_field :first_name, class: "form-control", placeholder: "First name...", required: true %>
-      <%= f.text_field :last_name, class: "form-control mb-3", placeholder: "Last name...", required: true %>
-      <div class="d-flex flex-row-reverse">
-        <%= f.submit 'Next Step', class:"btn btn-primary" %>
-      </div>
+      <%= f.text_field :last_name, class: "form-control", placeholder: "Last name...", required: true %>
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <%= f.submit 'Next Step', class:"btn btn-primary" %>
     </div>
   <% end %>
   <style>
