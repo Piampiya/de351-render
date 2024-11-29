@@ -282,6 +282,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import (~> 1.8)
+  base64
   bigdecimal
   bootsnap
   bullet (~> 8.0)

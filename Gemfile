@@ -87,3 +87,5 @@ gem "bullet", "~> 8.0"
 gem "activerecord-import", "~> 1.8"
 
 gem "wicked", "~> 2.0"
+
+gem 'base64', require: false
