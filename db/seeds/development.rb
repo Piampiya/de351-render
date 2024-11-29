@@ -5,48 +5,68 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts 'Seeding development database...'
-piam = User.first_or_create!(email: 'piam@example.com',
-                             password: 'password',
-                             password_confirmation: 'password',
-                             first_name: 'Piam',
-                             last_name: 'Sang',
-                             role: User.roles[:admin])
-boon = User.first_or_create!(email: 'boon@example.com',
-                             password: 'password',
-                             password_confirmation: 'password',
-                             first_name: 'Boon',
-                             last_name: 'Ritta')
-PersonalInfo.first_or_create!(gender: 'Male',
-                              age: '21',
-                              country: 'Thailand',
-                              goal: 'Share knowledge',
-                              user: piam)
-PersonalInfo.first_or_create(gender: 'Female',
-                             age: '20',
-                             country: 'Japan',
-                             goal: 'Learn new things',
-                             user: boon)
-category = Category.first_or_create!(name:"Share", display_in_nav: true)
-Category.first_or_create!(name:"Discuss", display_in_nav: true)
 
-elapsed = Benchmark.measure do
+def seed_users
+  john = User.create(email: 'john@example.com',
+                     password: 'password',
+                     password_confirmation: 'password',
+                     first_name: 'John',
+                     last_name: 'Doe',
+                     role: User.roles[:admin])
+  jane = User.create(email: 'jane@example.com',
+                     password: 'password',
+                     password_confirmation: 'password',
+                     first_name: 'Jane',
+                     last_name: 'Bond')
+end
+
+def seed_personal_infos
+  PersonalInfo.create(gender: 'Male',
+                      age: '26',
+                      country: 'USA',
+                      goal: 'Share knowledge and build a good community for programmers',
+                      user: User.first)
+  PersonalInfo.create(gender: 'Female',
+                      age: '24',
+                      country: 'Canada',
+                      goal: 'Learn everything about programming',
+                      user: User.second)
+end
+
+def seed_categories
+  Category.create(name: 'Share', display_in_nav: true)
+  Category.create(name: 'Discuss', display_in_nav: true)
+end
+
+def seed_posts_and_comments
   posts = []
-  10.times do |x|
+  john = User.first
+  jane = User.second
+  category = Category.first
+  2.times do |x|
     puts "Creating post #{x}"
     post = Post.new(title: "Title #{x}",
                     body: "Body #{x} Words go here Idk",
-                    user: piam,
+                    user: john,
                     category: category)
 
-    5.times do |y|
-      puts "Creating comment #{y} for post #{x}"
+    1.times do |y|
+      puts "Creating comment #{y} for post #{x} with user #{jane.email}"
       post.comments.build(body: "Comment #{y}",
-                          user: boon)
+                          user: jane)
     end
+
     posts.push(post)
   end
   Post.import(posts, recursive: true)
+end
+
+elapsed = Benchmark.measure do
+  puts 'Seeding development database...'
+  seed_users
+  seed_personal_infos
+  seed_categories
+  seed_posts_and_comments
 end
 
 puts "Seeded development DB in #{elapsed.real} seconds"
