@@ -16,7 +16,12 @@
       </div>
       <div class="mt-2 mb-3">
         <%= f.label :age, "Age", class: "form-label" %>
-        <%= f.text_field :age, class: "form-control", placeholder: ".....", required: true %>
+        <%= f.number_field :age, class: "form-control", placeholder: ".....", required: true, min: 1, step: 1 %>
+        <% if @personal_info.errors[:age].any? %>
+          <div style="color: red;">
+            <%= @personal_info.errors[:age].first %>
+          </div>
+        <% end %>
       </div>
       <div class="mt-2 mb-3">
         <%= f.label :country, "Country", class: "form-label" %>
