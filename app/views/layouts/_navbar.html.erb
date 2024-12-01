@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top mb-3" style="background-color: purple;">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand text-white" do %>
       <%= image_tag "https://img.freepik.com/premium-vector/cute-coffee-with-code-illustration-cafe-restaurant-menu-cafe-logo-programmer-freelancer-developer-flat-cartoon-style-suitable-web-landing-page-banner-flyer-sticker-card-background_1033579-100342.jpg", alt: "ProgrammerCafe Logo", class: "logo", width: "30", height: "30" %>
       ProgrammerCafe
     <% end %>
@@ -10,10 +10,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class:'nav-link' %>
+          <%= link_to "Home", root_path, class:'nav-link text-white' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Blog", posts_path, class:"nav-link" %>
+          <%= link_to "Blog", posts_path, class:"nav-link text-white" %>
         </li>
         <li class="nav-item">
           <%= render 'layouts/categories', categories: @nav_categories %>
