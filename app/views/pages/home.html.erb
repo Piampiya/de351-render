@@ -10,6 +10,9 @@
   <div class="container card mt-4">
     <h2>User Info</h2>
     <h4><%= current_user.full_name %></h4>
+    <% if current_user.avatar.attached? %>
+      <%= image_tag(current_user.avatar, style: "width: 125px; height: 125px; border-radius: 100%;") %> <!-- avatar -->
+    <% end %>
     <ul>
       <li>Gender : <%= current_user.personal_info.gender.titleize %></li>
       <li>Age : <%= current_user.personal_info.age %></li>
