@@ -1,13 +1,15 @@
 <% if current_user %>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if current_user.avatar.attached? %>
+                <%= image_tag(current_user.avatar, style: "width: 30px; height: 30px; border-radius: 100%;") %> <!-- avatar -->
+            <% end %>
             <%= current_user.full_name %>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
             <li><%= link_to "Admin", admin_path, class:"dropdown-item" if current_user.admin? %></li>
             <li><%= link_to "New Category", new_category_path, class:"dropdown-item" if current_user.admin? %></li>
             <li><%= link_to "New Post", new_post_path, class:"dropdown-item" %></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
             <li><%= link_to "Edit Account", edit_user_registration_path, class:"dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>

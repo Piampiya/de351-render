@@ -3,6 +3,7 @@
 <h1>Categories</h1>
   <div id="categories">
     <% @categories.each do |category| %>
+      <hr />
       <%= render category %>
       <p>
         <%= link_to "Show this category", category %>
