@@ -9,9 +9,9 @@ services:
     name: mysite
     runtime: ruby
     plan: free
-    buildCommand: "./bin/render-build.sh"
+    buildCommand: "./bin/render-build.sh; bundle exec rails db:migrate; bundle exec rails db:seed"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
-    startCommand: "bundle exec rails server"
+    startCommand: "bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
