@@ -69,6 +69,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'webdrivers'
+  gem 'simplecov', require: false
+  gem 'rubycritic', require: false
 end
 
 gem 'mutex_m'
@@ -89,3 +91,5 @@ gem "activerecord-import", "~> 1.8"
 gem "wicked", "~> 2.0"
 
 gem 'base64', require: false
+
+gem 'drb'
